@@ -43,5 +43,59 @@ public class Main {
         } finally {
         }
 
+
+         /*  int[] myNumbers = {1, 2, 3};
+        System.out.println(myNumbers[10]); // error!
+
+
+        try {
+            int[] myNumbers1 = {1, 2, 3};
+            System.out.println(myNumbers1[10]);
+        } catch (Exception e) {
+            System.out.println("Something went wrong.");
+        }
+
+
+       try {
+            int[] myNumbers3 = {1, 2, 3};
+            System.out.println(myNumbers3[10]);
+        } catch (Exception e) {
+            System.out.println("Something went wrong.");
+        } finally {
+            System.out.println("The 'try catch' is finished.");
+        }
+
+
+          checkAge(15); // Set age to 15 (which is below 18...)
+          checkAge(20);//working
+*/
+//program to print the exception information using printStackTrace() method
+        int a=5;
+        int b=0;
+        try{
+            System.out.println(a/b);
+        }
+        catch(ArithmeticException e){
+            e.printStackTrace();
+        }
+
+//program to print the exception information using toString() method
+        try{
+            System.out.println(a/b);
+        }
+        catch(ArithmeticException e){
+            System.out.println(e.toString());
+        }
+
+        //program to print the exception information using getMessage() method
+        try{
+            System.out.println(a/b);
+        }
+        catch(ArithmeticException e){
+            System.out.println(e.getMessage());
+        }
+
     }
+
+
 }
