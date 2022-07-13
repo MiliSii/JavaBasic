@@ -13,58 +13,6 @@ import static java.lang.reflect.Array.newInstance;
 public class Main {
 
 
-
-
-
-    public static void m(){
-        int number=0;
-        try {
-            Scanner s=new Scanner(System.in);
-            System.out.println("input a number: ");
-            number=s.nextInt();
-            System.out.println(number);
-
-            // metoda koja vrsi citanje unosa i/o
-           // unos();
-        } catch (Exception e1){
-            // obraditi izuzetak
-            System.out.println("Input is not a number");
-        } catch (Throwable e){
-            System.out.println(e.getMessage());
-
-        }finally {
-            System.out.println("entered number is "+number);
-        }
-
-    }
-
-    // funkcija koja proverava unos i baca izuzetak -
-
-
-
-    public static void t(){
-        try {
-            int array[] = new int[10];
-            array[10] = 30 / 0;
-        } catch (ArithmeticException | ArrayIndexOutOfBoundsException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    public static  void ListOfNumbers(){
-        try {
-            Integer[] n ={1,2};
-            System.out.println(n[8]);
-        }catch (Exception e){
-            System.out.println("an exception happend!");
-        }
-
-    }
-
-
-
-
-
     //CHECKED EXCEPTIONS
     //Java verifies checked exceptions at compile-time.
     //a method must handle in its body or throw to the caller method so the caller method can handle it.
@@ -85,8 +33,6 @@ public class Main {
         }
 
     }
-
-
 
     public static void l(){
         try
@@ -168,6 +114,18 @@ public class Main {
         }
     }
 
+    public static  void ListOfNumbers(){
+
+        try {
+            Integer[] n ={1,2};
+            System.out.println(n[8]);
+        } catch (Exception e) {
+            throw new ArrayIndexOutOfBoundsException(e.getMessage());
+        }
+
+
+    }
+
     public static void texampleIllegalStateException(){
         try {
             ArrayList<String> list = new ArrayList<String>();
@@ -182,19 +140,56 @@ public class Main {
         }
     }
 
+//TRY-Catch
+    public static void m(){
+        int number=0;
+        try {
+            Scanner s=new Scanner(System.in);
+            System.out.println("input a number: ");
+            number=s.nextInt();
+            System.out.println(number);
+
+
+        } catch (Exception e1){
+
+            System.out.println("Input is not a number");
+        } catch (Throwable e){
+            System.out.println(e.getMessage());
+
+        }finally {
+            System.out.println("entered number is "+number);
+        }
+
+    }
+
+
+
+
+    public static void t(){
+        try {
+            int array[] = new int[10];
+            array[10] = 30 / 0;
+        } catch (ArithmeticException | ArrayIndexOutOfBoundsException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+
+
+
 
     public static void main(String[] args) {
 
 
-        //InputNumber();
+       // InputNumber();
         //readFile("New Microsoft Word Document.txt");
         //multiple();
         // m();
-        //x();
-        //l();
-        //j();
-        //texampleIllegalStateException();
 
+       // l();
+       // j();
+       // texampleIllegalStateException();
+        ListOfNumbers();
 
     }
 
