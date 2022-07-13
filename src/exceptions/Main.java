@@ -4,11 +4,12 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
+import java.util.logging.Logger;
 
 import static java.lang.Class.forName;
 
 public class Main {
-
+    public static final Logger LOGGER = Logger.getLogger(Main.class.getName());
 
     //CHECKED EXCEPTIONS
     //Java verifies checked exceptions at compile-time.
@@ -19,11 +20,23 @@ public class Main {
         try {
             forName("src/exceptions/test.java");
         } catch (ClassNotFoundException e) {
-            System.out.println("Class canot be find");
+            System.out.println("Class cannot be find");
             throw new ClassNotFoundException(e.getMessage());
 
         }
     }
+
+    public static void exampleCh1() {
+
+        try {
+            forName("src/exceptions/test.java");
+        } catch (Exception e) {
+            LOGGER.getLogger("Exception :: " , e.getMessage());
+
+        }
+    }
+
+
 
     public static void readFile(String fileName){
         try {
@@ -89,12 +102,12 @@ public class Main {
         }
 
     }
-    static void checkAge(int age) {
-        if (age < 21) {
-            throw new ArithmeticException("Access denied - You must be at least 18 years old.");
+    static void checkNumberOfPropleInTheRoom(int peopleNumber) {
+        if (peopleNumber > 30) {
+            throw new ArithmeticException("Access denied - there is no free seat in the room");
         }
         else {
-            System.out.println("Access granted - You are old enough!");
+            System.out.println("Access granted - there is a free seat in the room");
         }
 
     }
@@ -102,14 +115,13 @@ public class Main {
     static void ArrayIndex(){
         try {
             int[] myArray = {1,2,3,4,5};
-            System.out.println("Elements in the array are: ");
+            //System.out.println("Elements in the array are: ");
             System.out.println(Arrays.toString(myArray));
             Scanner s = new Scanner(System.in);
-
             System.out.println("Enter the index of the required element: ");
             int element = s.nextInt();
 
-            System.out.println("Element in the given index is :: "+myArray[element]);
+            System.out.println("Element in the given index is : "+myArray[element]);
         } catch (IndexOutOfBoundsException e) {
             throw new IndexOutOfBoundsException(e.getMessage());
         }
@@ -176,13 +188,13 @@ public class Main {
 
     public static void main(String[] args) throws ClassNotFoundException {
 
-        exampleCh();
+        //exampleCh();
         //readFile("testing.txt");
         //readFile1();
         //LengthOfString();
         //InputNumber();
-        //checkAge(90);
-        //ArrayIndex();
+        //checkNumberOfPropleInTheRoom(20);
+        ArrayIndex();
         //ListOfNumbers();
         //exampleIllegalStateException();
         //ArrayZero();
