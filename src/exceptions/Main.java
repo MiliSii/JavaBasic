@@ -9,6 +9,9 @@ import java.util.logging.Logger;
 import static java.lang.Class.forName;
 
 public class Main {
+
+
+
     public static final Logger LOGGER = Logger.getLogger(Main.class.getName());
 
     //CHECKED EXCEPTIONS
@@ -31,7 +34,7 @@ public class Main {
         try {
             forName("src/exceptions/test.java");
         } catch (Exception e) {
-            LOGGER.getLogger("Exception :: " , e.getMessage());
+            LOGGER.info("Class does not exist : " +e.getMessage());
 
         }
     }
@@ -48,7 +51,17 @@ public class Main {
 
     }
 
-    public static void readFile1(){
+    public static void readFile1(String fileName){
+        try {
+            FileReader reader=new FileReader(fileName);
+        } catch (Exception e) {
+            LOGGER.info("File does not exist : " +e.getMessage());
+
+        }
+
+    }
+
+    public static void File(){
         try
         {
             FileReader file = new FileReader("src/exceptions/test.txt");
@@ -61,6 +74,21 @@ public class Main {
             throw new RuntimeException("Incorrect path to the file");
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public static void File1(){
+        try
+        {
+            FileReader file = new FileReader("src/exceptions/test.txt");
+
+            file.read();
+
+        }
+        catch (Exception e)
+        {
+            LOGGER.info("Incorrect path to the file "+e.getMessage());
+
         }
     }
 
@@ -78,6 +106,18 @@ public class Main {
         }
 
     }
+
+    public static void LengthOfString1(){
+        try {
+            String s = null;
+            System.out.println(s.length());
+        } catch (Exception e) {
+           LOGGER.info("String is empty, length is zero "+e.getMessage());
+        }
+
+    }
+
+
     public static void InputNumber(){
         int number=0;
         int number1=0;
@@ -102,6 +142,27 @@ public class Main {
         }
 
     }
+
+    public static void InputNumber1(){
+        int number=0;
+        int number1=0;
+        try {
+            Scanner s=new Scanner(System.in);
+            System.out.println("input a number: ");
+            number=s.nextInt();
+
+            Scanner s1=new Scanner(System.in);
+            number1=s1.nextInt();
+            System.out.println(number/number1);
+
+        } catch (ArithmeticException e2){
+
+            LOGGER.info("cannot divade by 0 " +e2.getMessage());
+        } catch (Exception e1){
+               LOGGER.info("invalid integer " +e1.getMessage());
+        }
+
+    }
     static void checkNumberOfPropleInTheRoom(int peopleNumber) {
         if (peopleNumber > 30) {
             throw new ArithmeticException("Access denied - there is no free seat in the room");
@@ -112,10 +173,19 @@ public class Main {
 
     }
 
+    static void checkNumberOfPropleInTheRoom1(int peopleNumber) throws Exception {
+        if (peopleNumber > 30) {
+            throw new Exception("Access denied - there is no free seat in the room");
+        }
+        else {
+            System.out.println("Access granted - there is a free seat in the room");
+        }
+
+    }
+
     static void ArrayIndex(){
         try {
             int[] myArray = {1,2,3,4,5};
-            //System.out.println("Elements in the array are: ");
             System.out.println(Arrays.toString(myArray));
             Scanner s = new Scanner(System.in);
             System.out.println("Enter the index of the required element: ");
@@ -126,6 +196,27 @@ public class Main {
             throw new IndexOutOfBoundsException(e.getMessage());
         }
     }
+
+
+    static void ArrayIndex1(){
+        try {
+            int[] myArray = {1,2,3,4,5};
+            System.out.println(Arrays.toString(myArray));
+            Scanner s = new Scanner(System.in);
+            System.out.println("Enter the index of the required element: ");
+            int element = s.nextInt();
+
+            System.out.println("Element in the given index is : "+myArray[element]);
+        } catch (Exception e) {
+            LOGGER.info("Index can be from 0 to 4 : "+e.getMessage());
+        }
+    }
+
+
+
+
+
+
 
     public static  void ListOfNumbers(){
 
@@ -138,6 +229,20 @@ public class Main {
 
 
     }
+
+    public static  void ListOfNumbers1() throws Exception {
+
+        try {
+            Integer[] n ={1,2};
+            System.out.println(n[8]);
+        } catch (Exception e) {
+            LOGGER.info("Lenght can be 0 and 2 - "+e.getMessage());
+
+        }
+
+
+    }
+
 
     public static void exampleIllegalStateException(){
         try {
@@ -153,6 +258,20 @@ public class Main {
         }
     }
 
+    public static void exampleIllegalStateException1(){
+        try {
+            ArrayList<String> list = new ArrayList<String>();
+            list.add("a");
+            list.add("b");
+            list.add("c");
+
+            Iterator<String> it = list.iterator();
+            it.remove();
+        } catch (Exception e) {
+            LOGGER.info("" + e.getMessage());
+        }
+    }
+
 //TRY-Catch(multiple)
 
     public static void ArrayZero(){
@@ -164,6 +283,15 @@ public class Main {
         }
     }
 
+    public static void ArrayZero1(){
+        try {
+            int array[] = new int[10];
+            array[10] = 30 / 0;
+        } catch (Exception e) {
+            LOGGER.info(e.getMessage());
+        }
+    }
+
     public static void number(){
         int number=0;
         try {
@@ -171,13 +299,13 @@ public class Main {
             System.out.println("input a number: ");
             number=s.nextInt();
             System.out.println(number);
-
+            LOGGER.info("number "+number);
 
         } catch (Exception e1){
 
-            System.out.println("Input is not a number");
+            LOGGER.info(e1.getMessage());
         } catch (Throwable e){
-            System.out.println(e.getMessage());
+            LOGGER.info(e.getMessage());
 
         }finally {
             System.out.println("entered number is "+number);
@@ -186,19 +314,45 @@ public class Main {
     }
 
 
-    public static void main(String[] args) throws ClassNotFoundException {
+    public static void main(String[] args) throws Exception {
 
         //exampleCh();
+        //exampleCh1();
+
         //readFile("testing.txt");
-        //readFile1();
+        //readFile1("testing.txt");
+
+        //File();
+        //File1();
+
         //LengthOfString();
-        //InputNumber();
-        //checkNumberOfPropleInTheRoom(20);
-        ArrayIndex();
+        //LengthOfString1();
+
+        //InputNumber(); //PROVERI
+        //InputNumber1();
+
+        //checkNumberOfPropleInTheRoom(60);
+        //checkNumberOfPropleInTheRoom1(60);
+
+
+        //ArrayIndex();
+        //ArrayIndex1();
+
+
+
         //ListOfNumbers();
+        //ListOfNumbers1();
+
         //exampleIllegalStateException();
+        //exampleIllegalStateException1();
+
+
         //ArrayZero();
+        //ArrayZero1();
+
+
         //number();
+
 
     }
 
