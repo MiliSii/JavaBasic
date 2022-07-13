@@ -28,17 +28,17 @@ public class Main {
 
         }
     }
-/*
+
     public static void exampleCh1() {
 
         try {
             forName("src/exceptions/test.java");
-        } catch (ExampleCh1Exception e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            throw new RuntimeException("Class on path not find: "+e.getMessage());
         }
     }
 
-*/
+
 
     public static void readFile(String fileName){
         try {
@@ -60,7 +60,7 @@ public class Main {
 
     }
 
-   /* public static void File(){
+   public static void File(){
         try
         {
             FileReader file = new FileReader("src/exceptions/test.txt");
@@ -74,9 +74,9 @@ public class Main {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }*/
-/*
-    public static void File1() {
+    }
+
+    public static void File1() throws MyIOException {
         try
         {
             FileReader file = new FileReader("src/exceptions/test.txt");
@@ -85,13 +85,13 @@ public class Main {
 
 
         }
-        catch (FileException e)
-        {
-            LOGGER.info("Incorrect path to the file "+e.getMessage());
+        catch (IOException e)
+        {   throw new MyIOException("Incorrect path to the file " +e.getMessage());
+
 
         }
     }
-*/
+
 
 
     //UNCHECKED EXCEPTIONS
@@ -119,14 +119,15 @@ public class Main {
 
 
     public static void InputNumber(){
-        int number=0;
-        int number1=0;
+        int number;
+        int number1;
         try {
             Scanner s=new Scanner(System.in);
             System.out.println("input a number: ");
             number=s.nextInt();
 
             Scanner s1=new Scanner(System.in);
+            System.out.println("input second number: ");
             number1=s1.nextInt();
             System.out.println(number/number1);
 
@@ -144,22 +145,28 @@ public class Main {
     }
 
     public static void InputNumber1(){
-        int number=0;
-        int number1=0;
+        int number;
+        int number1;
         try {
             Scanner s=new Scanner(System.in);
             System.out.println("input a number: ");
             number=s.nextInt();
-
+            System.out.println("input second number: ");
             Scanner s1=new Scanner(System.in);
             number1=s1.nextInt();
             System.out.println(number/number1);
 
+        } catch (InputMismatchException e1){
+            //System.out.println("invalid integer");
+            throw new MyInputMismatchException("invalid integer"+e1.getMessage());
+            //System.out.println(e1.getMessage());
         } catch (ArithmeticException e2){
+            throw new MyArithmeticException("cannot divade by 0 "+e2.getMessage());
+            //System.out.println("cannot divade by 0");
+        } catch (Exception e3){
 
-            LOGGER.info("cannot divade by 0 " +e2.getMessage());
-        } catch (Exception e1){
-               LOGGER.info("invalid integer " +e1.getMessage());
+            System.out.println("input must be number");
+
         }
 
     }
@@ -198,7 +205,7 @@ public class Main {
     }
 
 
-    static void ArrayIndex1(){
+    static void ArrayIndex1() throws IndexException{
         try {
             int[] myArray = {1,2,3,4,5};
             System.out.println(Arrays.toString(myArray));
@@ -207,7 +214,7 @@ public class Main {
             int element = s.nextInt();
 
             System.out.println("Element in the given index is : "+myArray[element]);
-        } catch (IndexException e) {
+        } catch (IndexOutOfBoundsException e) {
             LOGGER.info("Index can be from 0 to 4 : "+e.getMessage());
             throw new IndexException(e.getMessage());
         }
@@ -265,7 +272,7 @@ public class Main {
             Iterator<String> it = list.iterator();
             it.remove();
         } catch (Exception e) {
-            LOGGER.info("" + e.getMessage());
+            LOGGER.info("Exeption becouse iterator can not use remuve(): " + e.getMessage());
         }
     }
 
@@ -280,12 +287,13 @@ public class Main {
         }
     }
 
-    public static void ArrayZero1(){
+    public static void ArrayZero1() throws Exception {
         try {
             int array[] = new int[10];
             array[10] = 30 / 0;
-        } catch (Exception e) {
-            LOGGER.info(e.getMessage());
+        } catch (MyArithmeticException | MyArrayIndexOutOfBoundsException e) {
+           throw new Exception("jhfb");
+            //LOGGER.info(e.getMessage());
         }
     }
 
@@ -325,24 +333,20 @@ public class Main {
         //LengthOfString();
         //LengthOfString1();
 
-        //InputNumber(); //PROVERI
-        //InputNumber1();
+        //InputNumber();
+        InputNumber1();
 
         //checkNumberOfPropleInTheRoom(60);
         //checkNumberOfPropleInTheRoom1(60);
 
-
         //ArrayIndex();
         //ArrayIndex1();
-
-
 
         //ListOfNumbers();
         //ListOfNumbers1();
 
         //exampleIllegalStateException();
         //exampleIllegalStateException1();
-
 
         //ArrayZero();
         //ArrayZero1();
