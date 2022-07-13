@@ -1,14 +1,11 @@
 package exceptions;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.channels.ScatteringByteChannel;
 import java.util.*;
 
 import static java.lang.Class.forName;
-import static java.lang.reflect.Array.newInstance;
 
 public class Main {
 
@@ -19,22 +16,26 @@ public class Main {
     //Checked exceptions are checked by the Java compiler so they are called compile time exceptions.
 
     public static void exampleCh() throws ClassNotFoundException {
-        forName("exceptions-mili");
+        try {
+            forName("src/exceptions/test.java");
+        } catch (ClassNotFoundException e) {
+            System.out.println("Class canot be find");
+            throw new ClassNotFoundException(e.getMessage());
+
+        }
     }
 
     public static void readFile(String fileName){
         try {
             FileReader reader=new FileReader(fileName);
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(e); //throw-It is mainly used to throw a custom exception.
 
-            ////Alternate logic
-            //		e.printStackTrace();
         }
 
     }
 
-    public static void l(){
+    public static void readFile1(){
         try
         {
             FileReader file = new FileReader("src/exceptions/test.txt");
@@ -53,9 +54,9 @@ public class Main {
 
 
     //UNCHECKED EXCEPTIONS
+// If a program throws an unchecked exception, it reflects some error inside the program logic.
 
-
-    public static void multiple(){
+    public static void LengthOfString(){
         try {
             String s = null;
             System.out.println(s.length());
@@ -89,7 +90,7 @@ public class Main {
 
     }
     static void checkAge(int age) {
-        if (age < 18) {
+        if (age < 21) {
             throw new ArithmeticException("Access denied - You must be at least 18 years old.");
         }
         else {
@@ -98,7 +99,7 @@ public class Main {
 
     }
 
-    static void j(){
+    static void ArrayIndex(){
         try {
             int[] myArray = {1,2,3,4,5};
             System.out.println("Elements in the array are: ");
@@ -126,7 +127,7 @@ public class Main {
 
     }
 
-    public static void texampleIllegalStateException(){
+    public static void exampleIllegalStateException(){
         try {
             ArrayList<String> list = new ArrayList<String>();
             list.add("a");
@@ -140,8 +141,18 @@ public class Main {
         }
     }
 
-//TRY-Catch
-    public static void m(){
+//TRY-Catch(multiple)
+
+    public static void ArrayZero(){
+        try {
+            int array[] = new int[10];
+            array[10] = 30 / 0;
+        } catch (ArithmeticException | ArrayIndexOutOfBoundsException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void number(){
         int number=0;
         try {
             Scanner s=new Scanner(System.in);
@@ -163,33 +174,19 @@ public class Main {
     }
 
 
+    public static void main(String[] args) throws ClassNotFoundException {
 
-
-    public static void t(){
-        try {
-            int array[] = new int[10];
-            array[10] = 30 / 0;
-        } catch (ArithmeticException | ArrayIndexOutOfBoundsException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-
-
-
-
-    public static void main(String[] args) {
-
-
-       // InputNumber();
-        //readFile("New Microsoft Word Document.txt");
-        //multiple();
-        // m();
-
-       // l();
-       // j();
-       // texampleIllegalStateException();
-        ListOfNumbers();
+        exampleCh();
+        //readFile("testing.txt");
+        //readFile1();
+        //LengthOfString();
+        //InputNumber();
+        //checkAge(90);
+        //ArrayIndex();
+        //ListOfNumbers();
+        //exampleIllegalStateException();
+        //ArrayZero();
+        //number();
 
     }
 
