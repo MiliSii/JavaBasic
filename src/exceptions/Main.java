@@ -33,9 +33,8 @@ public class Main {
 
         try {
             forName("src/exceptions/test.java");
-        } catch (Exception e) {
-            LOGGER.info("Class does not exist : " +e.getMessage());
-
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -175,7 +174,7 @@ public class Main {
 
     static void checkNumberOfPropleInTheRoom1(int peopleNumber) throws Exception {
         if (peopleNumber > 30) {
-            throw new Exception("Access denied - there is no free seat in the room");
+            throw new InvalidNumberOfPeople("Access denied - there is no free seat in the room");
         }
         else {
             System.out.println("Access granted - there is a free seat in the room");
@@ -211,10 +210,6 @@ public class Main {
             LOGGER.info("Index can be from 0 to 4 : "+e.getMessage());
         }
     }
-
-
-
-
 
 
 
@@ -317,7 +312,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         //exampleCh();
-        //exampleCh1();
+        exampleCh1();
 
         //readFile("testing.txt");
         //readFile1("testing.txt");
