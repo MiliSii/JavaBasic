@@ -28,17 +28,17 @@ public class Main {
 
         }
     }
-
+/*
     public static void exampleCh1() {
 
         try {
             forName("src/exceptions/test.java");
-        } catch (ClassNotFoundException e) {
+        } catch (ExampleCh1Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-
+*/
 
     public static void readFile(String fileName){
         try {
@@ -60,7 +60,7 @@ public class Main {
 
     }
 
-    public static void File(){
+   /* public static void File(){
         try
         {
             FileReader file = new FileReader("src/exceptions/test.txt");
@@ -74,23 +74,24 @@ public class Main {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public static void File1(){
+    }*/
+/*
+    public static void File1() {
         try
         {
             FileReader file = new FileReader("src/exceptions/test.txt");
 
             file.read();
 
+
         }
-        catch (Exception e)
+        catch (FileException e)
         {
             LOGGER.info("Incorrect path to the file "+e.getMessage());
 
         }
     }
-
+*/
 
 
     //UNCHECKED EXCEPTIONS
@@ -172,9 +173,9 @@ public class Main {
 
     }
 
-    static void checkNumberOfPropleInTheRoom1(int peopleNumber) throws Exception {
+    static void checkNumberOfPropleInTheRoom1(int peopleNumber) throws PeopleException {
         if (peopleNumber > 30) {
-            throw new InvalidNumberOfPeople("Access denied - there is no free seat in the room");
+            throw new PeopleException("Access denied - there is no free seat in the room");
         }
         else {
             System.out.println("Access granted - there is a free seat in the room");
@@ -206,8 +207,9 @@ public class Main {
             int element = s.nextInt();
 
             System.out.println("Element in the given index is : "+myArray[element]);
-        } catch (Exception e) {
+        } catch (IndexException e) {
             LOGGER.info("Index can be from 0 to 4 : "+e.getMessage());
+            throw new IndexException(e.getMessage());
         }
     }
 
@@ -312,7 +314,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         //exampleCh();
-        exampleCh1();
+        //exampleCh1();
 
         //readFile("testing.txt");
         //readFile1("testing.txt");
