@@ -34,4 +34,4 @@ catch (exception(type) e(object))‏
 }
 
 From:
-https://www.geeksforgeeks.org/exceptions-in-java/ , https://beginnersbook.com/2013/04/java-throws/
+https://www.geeksforgeeks.org/exceptions-in-java/ and https://beginnersbook.com/2013/04/java-throws/
