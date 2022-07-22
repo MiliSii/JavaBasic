@@ -15,4 +15,5 @@ public class MyIllegalStateException extends IllegalStateException{
     public MyIllegalStateException(Throwable cause) {
         super(cause);
     }
+
 }

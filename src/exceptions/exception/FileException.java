@@ -10,4 +10,5 @@ public class FileException extends FileNotFoundException {
     public FileException(String s) {
         super(s);
     }
+
 }

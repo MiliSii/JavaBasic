@@ -9,4 +9,5 @@ public class MyInputMismatchException extends InputMismatchException {
     public MyInputMismatchException(String s) {
         super(s);
     }
+
 }

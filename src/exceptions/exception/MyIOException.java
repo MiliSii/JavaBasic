@@ -18,4 +18,5 @@ public class MyIOException extends IOException {
     public MyIOException(Throwable cause) {
         super(cause);
     }
+
 }

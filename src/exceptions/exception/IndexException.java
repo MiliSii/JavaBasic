@@ -11,4 +11,5 @@ public class IndexException extends IndexOutOfBoundsException{
     public IndexException(int index) {
         super(index);
     }
+
 }

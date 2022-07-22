@@ -11,4 +11,5 @@ public class MyArrayIndexOutOfBoundsException extends ArrayIndexOutOfBoundsExcep
     public MyArrayIndexOutOfBoundsException(int index) {
         super(index);
     }
+
 }

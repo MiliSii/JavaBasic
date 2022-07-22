@@ -7,4 +7,5 @@ public class PeopleException extends Exception{
 
     public PeopleException() {
     }
+
 }

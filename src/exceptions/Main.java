@@ -11,7 +11,6 @@ import java.util.logging.Logger;
 import static java.lang.Class.forName;
 
 public class Main {
-
     public static final Logger LOGGER = Logger.getLogger(Main.class.getName());
 
     //CHECKED EXCEPTIONS
