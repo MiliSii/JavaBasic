@@ -1,4 +1,4 @@
-package exceptions;
+package exceptions.exception;
 
 public class MyIllegalStateException extends IllegalStateException{
     public MyIllegalStateException() {
@@ -15,4 +15,5 @@ public class MyIllegalStateException extends IllegalStateException{
     public MyIllegalStateException(Throwable cause) {
         super(cause);
     }
+
 }

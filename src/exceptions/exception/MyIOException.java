@@ -1,4 +1,4 @@
-package exceptions;
+package exceptions.exception;
 
 import java.io.IOException;
 
@@ -18,4 +18,5 @@ public class MyIOException extends IOException {
     public MyIOException(Throwable cause) {
         super(cause);
     }
+
 }

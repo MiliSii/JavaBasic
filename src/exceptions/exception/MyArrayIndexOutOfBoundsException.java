@@ -1,4 +1,4 @@
-package exceptions;
+package exceptions.exception;
 
 public class MyArrayIndexOutOfBoundsException extends ArrayIndexOutOfBoundsException{
     public MyArrayIndexOutOfBoundsException() {
@@ -11,4 +11,5 @@ public class MyArrayIndexOutOfBoundsException extends ArrayIndexOutOfBoundsExcep
     public MyArrayIndexOutOfBoundsException(int index) {
         super(index);
     }
+
 }

@@ -1,4 +1,4 @@
-package exceptions;
+package exceptions.exception;
 
 public class IndexException extends IndexOutOfBoundsException{
     public IndexException() {
@@ -11,4 +11,5 @@ public class IndexException extends IndexOutOfBoundsException{
     public IndexException(int index) {
         super(index);
     }
+
 }
